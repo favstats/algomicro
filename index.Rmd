@@ -34,9 +34,9 @@ knitr::opts_chunk$set(fig.retina = 3,
 
 library(tidyverse)
 
-source("../../algo_ads/helpers.R")
+source("../algo_ads/helpers.R")
 
-# dir("../../img", recursive = T, full.names = T) %>%
+# dir("../img", recursive = T, full.names = T) %>%
 #   walk(~{file.copy(.x, str_remove(.x, "\\.\\.\\/"))})
 ```
 
@@ -721,9 +721,9 @@ class: white
 
 ```{r, echo = F}
 
-overview <- readRDS("../data/overview.rds")
+overview <- readRDS("../algo_ads/data/overview.rds")
 
-overview_day <- readRDS("../../algo_ads/data/overview_day.rds")
+overview_day <- readRDS("../algo_ads/data/overview_day.rds")
 # overview %>% 
 #   filter(is.na(campaign_name)) %>%
 #   select(reach, party) %>%
@@ -1384,7 +1384,7 @@ We observe:
 
 .pull-right[
 ```{r, fig.height=6, fig.width=8}
-over_time_gg <- readRDS("../../algo_ads/data/over_time_gg.rds")
+over_time_gg <- readRDS("../algo_ads/data/over_time_gg.rds")
 
 over_time_gg %>% 
   ggplot(aes(day, Difference, shape = party)) +
@@ -1461,7 +1461,7 @@ class: white
 ### Bulk Discount?
 
 ```{r}
-report_data <- readRDS("../../algo_ads/data/report_data.rds")
+report_data <- readRDS("../algo_ads/data/report_data.rds")
 ```
 
 
@@ -1552,10 +1552,10 @@ class: white
 .pull-right[
 ```{r}
 
-gender_dat <- readRDS("../../algo_ads/data/gender.rds") %>% 
+gender_dat <- readRDS("../algo_ads/data/gender.rds") %>% 
   filter(gender != "unknown")
 
-gender_audience <- readRDS("../../algo_ads/data/audience_joined_gender.rds")
+gender_audience <- readRDS("../algo_ads/data/audience_joined_gender.rds")
 
 gender_audience %>% 
   filter(gender != "unknown") %>%
@@ -1598,7 +1598,7 @@ class: white
 
 .pull-right[
 ```{r}
-age_audience <- readRDS("../../algo_ads/data/audience_joined_age.rds")
+age_audience <- readRDS("../algo_ads/data/audience_joined_age.rds")
 
 
 age_audience %>%
@@ -1648,7 +1648,7 @@ class: white
 
 .pull-right[
 ```{r}
-region_audience <- readRDS("../../algo_ads/data/audience_joined_region.rds")
+region_audience <- readRDS("../algo_ads/data/audience_joined_region.rds")
 
 
 region_audience %>%
