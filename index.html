@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Paying to Win</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Fabio Votta, Tom Dobber, Claes de Vreese, Natali Helberger" />
+    <meta name="date" content="2022-08-25" />
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="ascor.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: bottom, left, title-slide
+
+# Paying to Win
+## Exploring the Influence of the Meta Ad Delivery Algorithm
+### Fabio Votta, Tom Dobber, Claes de Vreese, Natali Helberger
+### 2022-08-25
+
+---
+
+
+layout: true
+    
+&lt;div class="logo"&gt;&lt;/div&gt; 
+
+
+
+
+
+
+
+---
+
+### Political Microtargeting
+
+&gt; Personalization of political campaign messages based on (large-scale) data collection
+
+--
+
+&lt;br&gt;
+
++ Discourse on (online) political microtargeting is often focused on the "bad actor" story
+
+  + Russian election interference campaign (IRA)
+  
+  + Cambridge Analytica
+  
+  + Social media company allowing all this to happen
+
+--
+
+&lt;br&gt;
+
++ The explicit assumption here is that the advertisers have strong control over who sees which ad
+
+--
+
+&lt;br&gt;
+
+There is a distinct lack of research on the *automated* aspect of political microtargeting: 
+
+the **ad delivery algorithm**
+
+---
+
+
+class: center, middle
+
+# Ad Objectives,&lt;br&gt;Optimizations,&lt;br&gt;Auctions &amp;&lt;br&gt;Relevance
+
+---
+
+### Ad Objectives, Optimizations, Auctions &amp; Relevance
+
+There is more than just targeting criteria that decides who sees political ads:
+
++ **Ad objective** = what is the goal of the ad?
+
+    for example: generate web traffic, like Facebook page, buy products
+    
+--
+
++ **Optimization** = how should the goal be achieved?
+
+    key metric to be optimized on: number of exposed users, clicks, conversions
+    
+--
+
++ **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on budget and *relevance*
+
+--
+
++ **Relevance** = how relevant is the ad to the user
+
+&lt;img src="img/relevant_quote.png" width="70%" /&gt;
+
+--
+
+
+
+→ ***Implies big role of the ad delivery algorithm***
+
+
+
+---
+
+
+class: center, middle, white
+
+![](img/plantuml.png)
+
+---
+
+class: center, middle
+
+## Prior investigations into the&lt;br&gt;role of the ad delivery algorithm
+
+---
+
+### Pricing differences in the US 2020 election
+
++ Biden campaign paid more than **6x more** 
+  + compared to Trump campaign when targeting older voters. [(The Markup 2020)](https://themarkup.org/election-2020/2020/10/29/facebook-political-ad-targeting-algorithm-prices-trump-biden)
+  
+  
+&lt;center&gt;
+&lt;img src="img/older.png" width="60%" /&gt;
+&lt;/center&gt;
+  
+&lt;!-- ![](img/older.png) --&gt;
+  
+*However, this compares different advertisements*
+
+---
+
+### Prior Research (Ali et al., 2020,2021)
+
+
+When targeting the same audience, at the same time, with the same budget:
+
++ Ad delivery is heavily skewed along gendered and racial stereotypes
+  + even without the intent of the advertiser [(Ali et al., 2020)](https://dl.acm.org/doi/10.1145/3359301)
+
+--
+
+Regarding political ads [(Ali et al., 2021)](https://dl.acm.org/doi/pdf/10.1145/3437963.3441801):
+
+--
+
++ **Skewed delivery**
+
+  + Political ads more often delivered to ideologically congruent audience 
+      + Bernie ads → higher % D; 
+      + Trump ads → higher % R
+
+--
+
++ **Increased cost**
+
+  + Liberal ad to a liberal audience: *21 Dollar per 1000 users*; 
+  + Conservative ad delivered to liberal audience: *40 Dollar per 1000 users*.
+
+--
+
+*However, this research uses researcher accounts*
+
+
+---
+
+class: center, middle
+
+## Research Question
+
+### How does the Meta ad delivery algorithm&lt;br&gt;influence the pricing &amp; distribution of political ads&lt;br&gt;in the Netherlands?
+
+---
+
+class: center, middle
+
+# Research Design
+
+---
+
+### Research Design
+
++ Place the same ads targeting the same audiences (9 different ones)
+
+--
+
++ Collaborate with Dutch parties to place political ads
+
++ Final collaboration with 3: 
+
+  1. GroenLinks (Green party)
+  2. VVD (centre-right party of PM Rutte)
+  3. PvdA (social democrats)
+  
+
+--
+
++ Place ads before nationwide local elections on March 16th 2022
+  + 1st to 7th February 2022
+
++ Spend 2 Euros a day on 45 ad copies
+
+  + in total: 630 Euro per party
+  
+  
+--
+  
++ Pre-registered research design and hypotheses [(osf.io/xmc7g)](osf.io/xmc7g)
+
+---
+
+
+
+### Dependent Variables
+
++ Price per 1k users reached
+
+  + this measure is an industry standard
+
++ Ad delivery share
+
+  + Audience shares measured by % of ads delivered to specific group
+  
+  + "How many people were reached in Audience A vs. Audience B"
+  
+  + Pairwise setup which allows us to observe presence and absence of target audience
+  
+     + e.g. ~60% of audience was interested in politics vs. 40% was not
+
+
+---
+
+
+### Research Design
+
+
+In order to test the algorithm we need to:
+
++ Place ads with ad goal: *Reach*
+
++ Ad optimization: *Unique users reached*
+
+&lt;br&gt;
+
+--
+
+
+Optimizing on Reach (rather than Traffic): 
+   
++ the algorithm has to work more on its internal assumptions 
+
++ doesn't use user cues (i.e. clicks) as much to decide who is going to see the ad
+
+---
+
+### Hypotheses
+
+![](img/relevant_quote.png)
+
+[(Meta Business Help Center, 2022)](https://www.facebook.com/business/help/430291176997542)
+
+
+&gt; **H1:** **The more relevant** an audience is for an ad, **the cheaper is the cost** for reaching 1000 users in that audience.
+
+&gt; **H2:** **The more relevant** an audience is for an ad, **the more are ads delivered** to that audience.
+
+--
+
+We expect that ads by party with a greater share of supporters are less expensive (H3a) and reach more people (H3b)
+
+&gt; **H3a:** Parties with a greater share of supporters pay less for reaching 1000 users.
+
+&gt; **H3b:** Parties with a greater share of supporters reach more people than smaller parties.
+
+
+---
+
+### Within- and between-party comparisons
+
+The study design incorporates two *levels of comparisons*
+
+&lt;br&gt;
+
+Observing differences of **pricing and delivery**:
+
+
+  1. *between parties*
+  
+    + i.e. we expect pricing and delivery to differ by party
+
+  1. *within a party*
+  
+    + i.e. we expect pricing and delivery to differ by audience
+
+
+---
+
+### Ad Relevance
+
+
+We theorize two different levels of (predicted) relevance:
+
+--
+
+1. Relevant audience for party (i.e. source of ad)
+
+--
+
++ Ads from an environmentalist party more likely to be relevant for audience interested in environmentalism.
+
+&lt;br&gt;
+
+--
+
+&lt;ol start="2"&gt;
+  &lt;li&gt;Relevant audience for ad content (i.e. political message)&lt;/li&gt;
+&lt;/ol&gt;
+
+
+--
+
+  + Political message likely to be relevant for people interested in politics
+
+
+--
+
+
+
+---
+
+
+### Targeting criteria (Sub-hypotheses for H1 &amp; H2)
+
+We used 9 different (paired) targeting criteria for our advertisements
+
+.pull-left[
+
+1. Political interests
+2. Excluding political interest
+
+
+]
+
+.pull-right[
+
+
+
+
+]
+
+
+---
+
+### Targeting criteria (Sub-hypotheses for H1 &amp; H2)
+
+We used 9 different (paired) targeting criteria for our advertisements
+
+.pull-left[
+
+1. Political interests
+2. Excluding political interest
+
+
+]
+
+.pull-right[
+
+**Relevant audience for ad content**
+
+&gt; Targeting political ads to audiences who are **interested in politics**
+
+&gt; + H1a) *is less expensive* 
+
+&gt; + H2a) *deliver more* 
+
+&gt; than targeting audiences who are not interested in politics. 
+
+
+]
+
+
+---
+
+### Targeting criteria (Sub-hypotheses for H1 &amp; H2)
+
+
+We used 9 different (paired) targeting criteria for our advertisements
+
+.pull-left[
+
+1. Political interests
+2. Excluding political interest
+  
+
+&lt;ol start="3"&gt;
+  &lt;li&gt;Higher educated audience&lt;/li&gt;
+  &lt;li&gt;Lower educated audience&lt;/li&gt;
+&lt;/ol&gt;
+
+
+]
+
+.pull-right[
+
+**Relevant audience for ad content**
+
+&gt; Targeting political ads to **higher-educated audiences**
+
+&gt; + H1b) *is less expensive* 
+
+&gt; + H2b) *deliver more* 
+
+&gt; than targeting lower-educated audiences. 
+
+
+]
+
+
+---
+
+### Targeting criteria (Sub-hypotheses for H1 &amp; H2)
+
+
+We used 9 different (paired) targeting criteria for our advertisements
+
+.pull-left[
+
+1. Political interests
+2. Excluding political interest
+
+&lt;ol start="3"&gt;
+  &lt;li&gt;Higher educated audience&lt;/li&gt;
+  &lt;li&gt;Lower educated audience&lt;/li&gt;
+&lt;/ol&gt;
+
+
+]
+
+.pull-right[
+
+
+**Relevant audience for party**
+
+
+&gt; Targeting political ads to **higher-educated audiences**
+
+&gt; + H1c) *is less expensive* 
+
+&gt; + H2c) *deliver more* 
+
+for GroenLinks compared to the PvdA and VVD. 
+
+]
+
+
+---
+
+### Targeting criteria (Sub-hypotheses for H1 &amp; H2)
+
+
+We used 9 different (paired) targeting criteria for our advertisements
+
+.pull-left[
+
+1. Political interests
+2. Excluding political interest
+  
+  
+&lt;ol start="3"&gt;
+  &lt;li&gt;Higher educated audience&lt;/li&gt;
+  &lt;li&gt;Lower educated audience&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol start="5"&gt;
+  &lt;li&gt;Environmental interests&lt;/li&gt;
+  &lt;li&gt;Excluding environmental interests&lt;/li&gt;
+&lt;/ol&gt;
+
+  
+
+]
+
+.pull-right[
+
+
+**Relevant audience for party**
+
+
+&gt; Targeting political ads to audiences **interested in environenmentalism**
+
+&gt; + H1d) *is less expensive* 
+
+&gt; + H2d) *deliver more* 
+
+for GroenLinks compared to the PvdA and VVD. 
+
+]
+
+
+---
+
+
+### Targeting criteria (Sub-hypotheses for H1 &amp; H2)
+
+
+We used 9 different (paired) targeting criteria for our advertisements
+
+.pull-left[
+
+1. Political interests
+2. Excluding political interest
+  
+&lt;ol start="3"&gt;
+  &lt;li&gt;Higher educated audience&lt;/li&gt;
+  &lt;li&gt;Lower educated audience&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol start="5"&gt;
+  &lt;li&gt;Environmental interests&lt;/li&gt;
+  &lt;li&gt;Excluding environmental interests&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol start="7"&gt;
+  &lt;li&gt;Economic interests&lt;/li&gt;
+  &lt;li&gt;Excluding Economic interests&lt;/li&gt;
+&lt;/ol&gt;
+
+]
+
+.pull-right[
+
+
+**Relevant audience for party**
+
+
+&gt; Targeting political ads to audiences **interested in the economy**
+
+&gt; + H1e) *is less expensive* 
+
+&gt; + H2e) *deliver more* 
+
+for VVD compared to the PvdA and GroenLinks. 
+
+]
+
+
+---
+
+
+### Targeting criteria (Sub-hypotheses for H1 &amp; H2)
+
+
+We used 9 different (paired) targeting criteria for our advertisements
+
+.pull-left[
+
+1. Political interests
+2. Excluding political interest
+
+&lt;ol start="3"&gt;
+  &lt;li&gt;Higher educated audience&lt;/li&gt;
+  &lt;li&gt;Lower educated audience&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol start="5"&gt;
+  &lt;li&gt;Environmental interests&lt;/li&gt;
+  &lt;li&gt;Excluding environmental interests&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol start="7"&gt;
+  &lt;li&gt;Economic interests&lt;/li&gt;
+  &lt;li&gt;Excluding Economic interests&lt;/li&gt;
+&lt;/ol&gt;
+  
+&lt;ol start="9"&gt;
+  &lt;li&gt;No Targeting&lt;/li&gt;
+&lt;/ol&gt;
+
+]
+
+
+---
+
+class: white
+
+### Relevance Coding
+
+![](img/relevance_coding.png)
+
+
+---
+
+
+class: white
+
+### Design Overview
+
++ Pre-test determined minimum number of ads per audience: *5* 
+
+   + 9 audiences * 5 ads = 45 ads per party (135 in total)
+
+&lt;center&gt;
+&lt;img src="img/condtions_osf.png" width="70%" height="70%"&gt;
+&lt;/center&gt;
+
+
+---
+
+
+class: center, middle
+
+# Ad Creative and Setup
+
+
+---
+
+
+
+
+## Ad Creative and Setup
+
++ Infos about the election and how to vote from the *Rijksoverheid*
+
++ Official Get-Out-To-Vote campaign "Elke Stem Telt" for local elections
+
++ Selected *Five* Images from campaign that we would like to run
+
+&lt;br&gt;
+
+&lt;img src="img/Logo-ElkeStemTelt_on-white_RGB.png" width="50%" height="50%"&gt;
+
++ https://www.kiesraad.nl/verkiezingen/gemeenteraden
+
+---
+
+## How the ad looked like on Desktop
+
+&lt;img src="img/example_pvda.png" style="float: left; width: 37%; margin-right: 1%; margin-bottom: 0.5em;"&gt;
+&lt;img src="img/example_gl.png" style="float: left; width: 37%; margin-right: 1%; margin-bottom: 0.5em;"&gt;
+&lt;p style="clear: both;"&gt;
+
+
+---
+
+## How the ad looked like on Desktop
+
+
+&lt;img src="img/example_vvd.png" style="float: left; width: 37%; margin-right: 1%; margin-bottom: 0.5em;"&gt;
+
+
+
+
+---
+
+
+
+class: center, middle
+
+## Results
+
+---
+
+class: white
+
+### Relevance X Price (A) / Ad delivery shares (B)
+
+![](img/scatters.png)
+
+---
+
+class: white
+
+### Regression Results (H1 &amp; H2)
+
+![](img/reg1.png)
+
+
+---
+
+class: white
+
+### Regression Results (H1 &amp; H2)
+
+![](img/reg2.png)
+
+
+---
+
+class: center, white, middle
+
+### Between-party differences
+
+`\(\rightarrow\)` we consistently find one party that pays less and reaches more people 
+
+
+---
+
+
+class: white
+
+#### Between-party differences (for entire ad campaign)
+
+.font80[PvdA pays the least (**32-42 cents less** or: 9-11%) &amp; reaches most people (**14-17k more** or: 8-10%)]
+
+
+
+
+.pull-left[
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="504" /&gt;
+
+
+]
+
+--
+
+.pull-right[
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" width="504" /&gt;
+
+
+
+
+]
+
+
+---
+
+class: white
+
+#### Between-party differences (per individual ad)
+
+.font80[PvdA pays the least (**10-12 cents less** or: 8-10%) &amp; reaches most people (~**1.1 - 1.3k more** per ad)]
+
+
+.pull-left[
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="504" /&gt;
+
+```
+## # A tibble: 15 x 5
+##    party      reach share targeting        relevance
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;
+##  1 PvdA       13138  52.1 Higher Education         1
+##  2 PvdA       12917  51.7 Higher Education         1
+##  3 GroenLinks 11938  51.7 Higher Education         2
+##  4 VVD        11528  51.6 Higher Education         1
+##  5 VVD        11845  51.6 Higher Education         1
+##  6 GroenLinks 11622  51.6 Higher Education         2
+##  7 PvdA       12860  51.6 Higher Education         1
+##  8 GroenLinks 11727  51.4 Higher Education         2
+##  9 PvdA       12729  51.1 Higher Education         1
+## 10 GroenLinks 11486  51.1 Higher Education         2
+## 11 VVD        11388  51.0 Higher Education         1
+## 12 PvdA       12632  50.9 Higher Education         1
+## 13 GroenLinks 11509  50.9 Higher Education         2
+## 14 VVD        11344  50.8 Higher Education         1
+## 15 VVD        11260  50.6 Higher Education         1
+```
+
+
+]
+
+--
+
+.pull-right[
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" width="504" /&gt;
+
+
+
+
+]
+
+
+
+
+---
+
+class: white
+
+#### Between-party differences (per target audience)
+
+&lt;!-- ![](img/diffs_single1.png) --&gt;
+
+&lt;img src="img/diffs_single1.png" width="85%" height="85%"&gt;
+
+
+---
+
+class: white
+
+#### Between-party differences (per target audience)
+
+&lt;!-- ![](img/diffs_single2.png) --&gt;
+
+&lt;img src="img/diffs_single2.png" width="85%" height="85%"&gt;
+
+---
+
+class: center, white, middle
+
+### Within-party differences
+
+---
+
+
+class: white
+
+
+### Within-party differences
+
+
+Let's compare now:
+
+Ad price and ad delivery share of 
+
++ **higher-educated** vs. **lower-educated** audience
+
++ Audience **interested in the economy** vs. **not interested**
+
++ Audience **interested in politics** vs. **not interested**
+
++ Audience **interested in the environment** vs. **not interested**
+
+---
+
+
+class: white
+
+
+
+### Within-party differences - Price per 1k
+
+
+.pull-left[
+
+
+Ads **cost less for**:
+
++ *higher-educated* vs. *lower-educated audience*
+
+Ad price **does not statistically differ for**:
+
++ Audience *interested in the economy* vs. *not interested*
+
++ Audience *interested in politics* vs. *not interested*
+
+Ads **cost more for**:
+
++ Audience *interested in the environment* vs. *not interested*
+
+
+]
+
+.pull-right[
+
+![](img/diffs1.png)
+
+]
+
+---
+
+class: center, white, middle
+
+### Within-party differences
+
+Ad delivery shares
+
+`\(\rightarrow\)` Results are (almost) the same
+
+
+---
+
+class: white
+
+
+### Within-party differences - Ad delivery shares
+
+
+.pull-left[
+
+
+Ads **deliver more to**:
+
++ *higher-educated* vs. *lower-educated audience*
+
+Ad delivery **does not statistically differ for**:
+
++ Audience *interested in the economy* vs. *not interested* **except for VVD**
+
++ Audience *interested in politics* vs. *not interested*
+
+Ads **deliver less to**:
+
++ Audience *interested in the environment* vs. *not interested*
+
+
+]
+
+
+.pull-right[
+
+![](img/diffs2.png)
+
+]
+
+
+---
+
+class: center, middle
+
+## Summary
+
+
+---
+
+### Summary
+
+Our findings do not always align with expectations:
+
++ In particular, the measure of ad relevance does not seem to drive pricing as much (although it does affect ad delivery share)
+
+--
+
+**However:**
+
+&gt; We find that Meta ad delivery algorithm prioritizes certain parties and audiences for political advertising
+
+
+---
+
+
+### Summary - between-party comparisons
+
+
++ Compared to GroenLinks and VVD:
+
+  + PvdA pays less (**32-42 cents less** per 1k overall, ~-9-11%)
+  + PvdA reaches more people (~1.1 - 1.3k more per ad, in total: 14-17k more)
+  
+--
+
++ People interested in environment
+  
+  + cheaper for GroenLinks compared to VVD (4 cent, or ~4.1%)
+  + no difference in delivery
+  
+--
+
++ People interested in economy
+
+  + no difference in pricing (but more expensive when VVD **excludes** audience)
+  + VVD higher ad delivery share compared to GroenLinks (1.08% higher)
+
+--
+
++ Higher-educated people
+
+  + PvdA cheapest and most reach, no advantage for GroenLinks
+  
+  
+---
+
+
+### Summary - within-party comparisons
+
++ People interested politics (vs. not)
+  + no difference in delivery and pricing
+  
+--
+  
++ Higher-educated people (vs. lower-educated people) 
+    
+  + cheaper to reach (~-5%)
+  + deliver more (~2.6% higher share)
+  
+--
+
++ People interested in environment (vs. not)
+  
+  + more expensive to reach (~+10%)
+  + deliver less (~-5.11% lower share)
+  
+--
+
++ People interested in economy (vs. not)
+  
+  + no difference in pricing
+  + delivers more for VVD (1.55% higher share)
+  
+  
+  
+  
+
+
+
+
+---
+
+
+### Age, gender and regional biases
+
+Even after controlling for Meta user breakdown:
+
++ Men systematically receive more ads than women 
+
++ 18-24 year olds systematically receive less ads 
+
++ Certain Dutch provinces systematically receive less ads than others 
+
+---
+
+
+
+### Implications
+
+
++ Meta (dis-)advantages certain parties
+
+  +  the findings presented in this paper show that political parties were not charged the same price for the same service
+  
+  + Unequal playing field
+
+--
+
++ Some groups of people and regions are **systematically** less likely to receive political advertisements and more expensive to reach
+
+  + isolating these groups from receiving election-related information
+  
+  + may deepen political, social and geographical inequalities
+
+--
+
++ Little to no transparency by Meta about these systematic biases
+
+  + difficult to research and make visible instances of unequal treatment and price discrimination
+  + highlighting importance of access to data
+  
+--
+  
++ Simply "banning" microtargeting would be inadequate
+
+  + more power to the black box algorithm
+  
+
+---
+
+class: center, middle
+
+## Thank you for your attention!
+
+
+---
+
+
+class: center, middle
+
+## Appendix
+
+
+---
+
+
+class: white, middle center
+
+## Skewed delivery 
+
+in terms of gender, age and region
+
+---
+
+
+
+class: white
+
+## Differences in delivery by gender
+
+.pull-left[
++ *Line at zero* shows empirical equilibrium of target audiences (i.e. the observed share of men and women in target audience)
+
++ *Deviation from zero* are algorithmic biases
+
+  + above zero: prioritization
+  
+  + below zero: de-prioritization
+
++ Ads *deliver to more men* for every party
+
++ However: bias towards men seems smaller for GroenLinks
+]
+
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+]
+
+
+
+
+---
+
+class: white
+
+## Differences in delivery by age group
+
+
+.pull-left[
+
++ Ads *deliver less to young people*
+
+  + aged 18-24
+
++ Consistent for each party
+
+]
+
+--
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-10-1.png" width="504" /&gt;
+]
+
+
+---
+
+class: white
+
+## Region differences
+
+--
+
+.pull-left[
+
++ Ads deliver more to some regions
+
+  + for example: Limburg, Friesland, Drenthe
+
++ Ads deliver less to other regions
+
+  + Utrecht, North Holland, North Brabant
+
++ Consistent for each party
+
+
+]
+
+--
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+]
+
+---
+
+
+class: white
+#### Between-party differences
+
+.font80[If we exclude economic interests/target environmental interests: VVD reaches less people and cheaper than GL]
+
+
+
+
+
+
+.pull-left[
+&lt;img src="index_files/figure-html/unnamed-chunk-12-1.png" width="504" /&gt;
+]
+
+
+.pull-right[
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
+
+
+]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%",
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
