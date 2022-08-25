@@ -46,7 +46,7 @@ source("../algo_ads/helpers.R")
 
 ### Political Microtargeting
 
-> Personalization of political campaign messages based on (large-scale) data collection
+> Targeting and tailoring of political campaign messages to specific groups based on (large-scale) data collection
 
 --
 
