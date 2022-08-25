@@ -277,27 +277,7 @@ Optimizing on Reach (rather than Traffic):
 
 ---
 
-### Hypotheses
 
-![](img/relevant_quote.png)
-
-[(Meta Business Help Center, 2022)](https://www.facebook.com/business/help/430291176997542)
-
-
-> **H1:** **The more relevant** an audience is for an ad, **the cheaper is the cost** for reaching 1000 users in that audience.
-
-> **H2:** **The more relevant** an audience is for an ad, **the more are ads delivered** to that audience.
-
---
-
-We expect that ads by party with a greater share of supporters are less expensive (H3a) and reach more people (H3b)
-
-> **H3a:** Parties with a greater share of supporters pay less for reaching 1000 users.
-
-> **H3b:** Parties with a greater share of supporters reach more people than smaller parties.
-
-
----
 
 ### Within- and between-party comparisons
 
@@ -344,6 +324,28 @@ We theorize two different levels of (predicted) relevance:
 --
 
 + Political message likely to be relevant for people interested in politics
+
+---
+
+### Hypotheses
+
+![](img/relevant_quote.png)
+
+[(Meta Business Help Center, 2022)](https://www.facebook.com/business/help/430291176997542)
+
+
+> **H1:** **The more relevant** an audience is for an ad, **the cheaper is the cost** for reaching 1000 users in that audience.
+
+> **H2:** **The more relevant** an audience is for an ad, **the more are ads delivered** to that audience.
+
+--
+
+We expect that ads by party with a greater share of supporters are less expensive (H3a) and reach more people (H3b)
+
+> **H3a:** Parties with a greater share of supporters pay less for reaching 1000 users.
+
+> **H3b:** Parties with a greater share of supporters reach more people than smaller parties.
+
 
 
 
