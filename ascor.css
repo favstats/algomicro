@@ -147,11 +147,19 @@ ul li::marker {
 }
 
 .title-slide h1,
-.title-slide h2,
 .title-slide h3{
   border: none;
   color: #e22;
   text-shadow: none;
+}
+
+.title-slide h1{
+  font-size: 2.55em;
+}
+
+
+.title-slide h2{
+  font-size: 1.95em;
 }
 
 
