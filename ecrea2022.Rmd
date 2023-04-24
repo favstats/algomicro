@@ -1,7 +1,7 @@
 ---
 title: "Algorithmic Microtargeting?"
 subtitle: "How ad delivery algorithms influence distribution of political ads"
-author: "Fabio Votta, Tom Dobber, Natali Helberger, Claes de Vreese"
+author: "Fabio Votta, Tom Dobber, Natali Helberger, Claes de Vreese, and Benjamin Guinaudeau"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -50,25 +50,23 @@ overview_day <- readRDS("../algo_ads/data/overview_day.rds")
 
 ### Political Microtargeting
 
-> Targeting and tailoring of political campaign messages to specific groups based on (large-scale) data collection
-
---
-
-<br>
-
 + Discourse on (online) political microtargeting is often focused on the "bad actor" story
 
   + Russian election interference campaign (IRA)
   
   + Cambridge Analytica
   
-  + Social media company allowing all this to happen
-
 --
 
 <br>
 
 + The explicit assumption here is that the advertisers have strong control over who sees which ad
+
+> But there is more than just targeting criteria that decides who sees political ads:
+
+   + advertisers can set targeting *boundaries*
+
+   + *ad auctions* and *ad delivery algorithms* decide which individual users get ads from which advertiser
 
 
 ---
@@ -85,8 +83,6 @@ overview_day <- readRDS("../algo_ads/data/overview_day.rds")
 
 ### Who decides who sees which ad on Meta?
 
-> There is more than just targeting criteria that decides who sees political ads:
-
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
 + **+ Relevance** = how relevant is the ad to the user
@@ -101,17 +97,20 @@ knitr::include_graphics("img/relevant_quote.png")
 
 ### Who decides who sees which ad on Meta?
 
-> There is more than just targeting criteria that decides who sees political ads:
-
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
 + **+ Relevance** = how relevant is the ad to the user
 
 
-
 ![](img/auction1.jpg)
 
-#### The process of finding *relevant* audiences is done by **ad delivery algorithms**
+##### The automated process of finding *relevant* audiences is driven by *ad delivery algorithms*, we term this:
+
+.pull-right[
+ **algorithmic microtargeting**
+]
+
+
 
 ---
 
@@ -552,6 +551,171 @@ class: white
 
 <img src="img/diffs_single1.png" width="85%" height="85%">
 
+
+
+---
+
+
+class: white
+#### Between-party differences (zoomed in)
+
+.font80[*Exclude economic interests* or *target environmental interests*:<br>VVD reaches fewer people per ad than GL (**~380-450 fewer people**) and pay more (**4-5 cents more**)]
+
+
+.pull-left[
+```{r}
+
+mod_nobreak_h1cg <- lm(reach ~ targeting * party + engagement, data = overview)
+
+library(modelbased)
+
+contrasts_nobreak_h1cg <- estimate_contrasts(mod_nobreak_h1cg, contrast = c("targeting", "party"),
+                                at = c("targeting", "party")) %>% 
+  as.data.frame()  %>%  
+  mutate(Contrast = paste(Level1, "-", Level2)) %>%  
+  mutate(condition_comparison = fct_reorder(Contrast, Difference)) 
+
+
+
+
+ww <- contrasts_nobreak_h1cg %>% 
+  filter(str_detect(condition_comparison, "excluded")) %>% 
+  filter(str_count(condition_comparison, "Economy excluded") == 2)  %>% 
+  mutate(party = str_extract(Level1, "VVD|GroenLinks|PvdA")) %>% 
+  filter(str_detect(Level2, "GroenLinks")) %>% 
+  bind_rows(contrasts_nobreak_h1cg %>%
+  filter(!str_detect(condition_comparison, "excluded")) %>%
+  filter(str_count(condition_comparison, "Environment") == 2)  %>%
+  mutate(party = str_extract(Level1, "VVD|GroenLinks|PvdA")) %>%
+  filter(str_detect(Level2, "GroenLinks"))) %>%
+  # bind_rows(contrasts_nobreak_h1cg %>% 
+  # filter(!str_detect(condition_comparison, "excluded")) %>%
+  # filter(str_count(condition_comparison, "Economy") == 2)  %>% 
+  # mutate(party = str_extract(Level1, "VVD|GroenLinks|PvdA")) %>% 
+  # filter(str_detect(Level2, "GroenLinks"))) %>% 
+  # bind_rows(contrasts_nobreak_h1cg %>% 
+  # filter(!str_detect(condition_comparison, "excluded")) %>%
+  # filter(str_count(condition_comparison, "Politics") == 2)  %>% 
+  # mutate(party = str_extract(Level1, "VVD|GroenLinks|PvdA")) %>% 
+  # filter(str_detect(Level2, "GroenLinks"))) %>% 
+  # in case the comparison is in wrong direction, change around
+  # mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_detect(condition_comparison, "excluded"), .x*-1, .x)) %>%
+  # mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_count(condition_comparison, "VVD")==2, .x*-1, .x)) %>%
+  # mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_detect(Level1, "Low"), .x*-1, .x)) %>%
+  mutate(condition_comparison = str_remove_all(condition_comparison, "VVD|GroenLinks|PvdA")) %>% 
+  mutate(plabel = get_plabs(p)) %>% 
+  mutate(diff_label = paste0(round(Difference, 2), plabel)) 
+  # count(condition_comparison)
+  # mutate(condition_comparison = "Reach of audience interested in the Environment (compared to VVD and Environment excluded)") %>% 
+  # mutate(condition_comparison = ifelse(
+    # !str_detect(condition_comparison, "excluded"),
+    # "Reach of audience interested in the Environment (compared to GroenLinks)",
+    # "Reach of audience interested in the Environment (compared to Environment excluded)"
+    # )) 
+# -> ww
+
+ww %>% 
+    ggplot(aes("", Difference, color = party)) + 
+    geom_point(position = position_dodge(width = 0.9)) +
+    geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0, position = position_dodge(width = 0.9)) +
+    geom_text(aes(label = diff_label, x= 0 %>% magrittr::add(1.15), y = Difference), position = position_dodge(width = 0.9), show.legend = F) +
+    coord_flip() +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(y = "Estimated reach differences",
+         x = "Targeting Comparisons") +
+    theme_minimal() +
+    scale_color_parties() +
+    ggtitle("Reach (compared to GroenLinks)") +
+    # facet_grid(condition_comparison ~ ., scales= "free_y" ) +
+    facet_wrap(~condition_comparison, ncol = 2, scales= "free_y" ) +
+    theme(legend.position = "bottom",
+          strip.text.y = element_blank(), 
+          strip.background = element_rect(fill = "lightgrey")) 
+
+
+```
+]
+
+```{r,eval=F}
+overview %>% 
+    filter(targeting == "Economy excluded") %>% 
+    group_by(party) %>% 
+    summarise(reach = max(reach))
+
+overview %>% 
+    filter(targeting == "Environment") %>% 
+    group_by(party) %>% 
+    summarise(reach = max(reach))
+```
+
+
+.pull-right[
+
+```{r}
+mod_nobreak_h1cg <- lm(cost_per_result ~ targeting * party + engagement, data = overview)
+
+```
+
+```{r}
+library(modelbased)
+
+contrasts_nobreak_h1cg <- estimate_contrasts(mod_nobreak_h1cg, contrast = c("targeting", "party"),
+                                at = c("targeting", "party")) %>% 
+  as.data.frame()  %>%  
+  mutate(Contrast = paste(Level1, "-", Level2)) %>%  
+  mutate(condition_comparison = fct_reorder(Contrast, Difference)) 
+
+
+
+
+ww <- contrasts_nobreak_h1cg %>% 
+  filter(str_detect(condition_comparison, "excluded")) %>% 
+  filter(str_count(condition_comparison, "Economy excluded") == 2)  %>% 
+  mutate(party = str_extract(Level1, "VVD|GroenLinks|PvdA")) %>% 
+  filter(str_detect(Level2, "GroenLinks")) %>% 
+  bind_rows(contrasts_nobreak_h1cg %>%
+  filter(!str_detect(condition_comparison, "excluded")) %>%
+  filter(str_count(condition_comparison, "Environment") == 2)  %>%
+  mutate(party = str_extract(Level1, "VVD|GroenLinks|PvdA")) %>%
+  filter(str_detect(Level2, "GroenLinks"))) %>%
+  # in case the comparison is in wrong direction, change around
+  # mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_detect(condition_comparison, "excluded"), .x*-1, .x)) %>%
+  # mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_count(condition_comparison, "VVD")==2, .x*-1, .x)) %>%
+  # mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_detect(Level1, "Low"), .x*-1, .x)) %>%
+  mutate(condition_comparison = str_remove_all(condition_comparison, "VVD|GroenLinks|PvdA")) %>% 
+  mutate(plabel = get_plabs(p)) %>% 
+  mutate(diff_label = paste0(round(Difference, 2), plabel)) 
+  # count(condition_comparison)
+  # mutate(condition_comparison = "Reach of audience interested in the Environment (compared to VVD and Environment excluded)") %>% 
+  # mutate(condition_comparison = ifelse(
+    # !str_detect(condition_comparison, "excluded"),
+    # "Reach of audience interested in the Environment (compared to GroenLinks)",
+    # "Reach of audience interested in the Environment (compared to Environment excluded)"
+    # )) 
+# -> ww
+
+ww %>% 
+    ggplot(aes("", Difference, color = party)) + 
+    geom_point(position = position_dodge(width = 0.9)) +
+    geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0, position = position_dodge(width = 0.9)) +
+    geom_text(aes(label = diff_label, x= 0 %>% magrittr::add(1.15), y = Difference), position = position_dodge(width = 0.9), show.legend = F) +
+    coord_flip() +
+    geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(y = "Estimated cost differences",
+         x = "Targeting Comparisons") +
+    theme_minimal() +
+    scale_color_parties() +
+    ggtitle("Cost (compared to GroenLinks)") +
+    # facet_grid(condition_comparison ~ ., scales= "free_y" ) +
+    facet_wrap(~condition_comparison, ncol = 2, scales= "free_y" ) +
+    theme(legend.position = "bottom",
+          strip.text.y = element_blank(), 
+          strip.background = element_rect(fill = "lightgrey")) 
+
+```
+
+
+]
 
 
 ---
