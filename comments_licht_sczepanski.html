@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Discussion: Licht and Szepanski (2023)</title>
+    <title>Discussion: Licht and Sczepanski (2023)</title>
     <meta charset="utf-8" />
     <meta name="author" content="Comments by: Fabio Votta" />
     <meta name="date" content="2023-04-25" />
@@ -14,7 +14,7 @@
 class: bottom, left, title-slide
 
 .title[
-# Discussion: Licht and Szepanski (2023)
+# Discussion: Licht and Sczepanski (2023)
 ]
 .subtitle[
 ## Who are they talking about? Detecting mentions of social groups in political texts with supervised learning
@@ -150,15 +150,15 @@ class: center, white, middle
 
 &lt;br&gt;
 
-+ Authors cite relevant literature but could cite more examples
-
-+ Introduction includes (detailed) results
 
 + (Potential) research question(s): 
  
 &gt; 1. How can we identify and analyze group mentions in political texts using automated methods?
 
 &gt; 2. How does automated labeling compare to other (traditional) annotation methods (dictionaries/hand-coding)?
+
++ Minor point: Introduction includes (detailed) results
+    + maybe could be more general
 
 
 
@@ -186,10 +186,13 @@ The authors mainly compare their method to two others:
 
 + No empirical comparison of how other methods would perform on the same dataset
     + is this even feasible though?
-    
-+ I am missing a bit of a more systematic comparison of the methods 
 
-+ Any additional methods that should be considered?
++ Any additional methods that should be compared or mentioned?
+    + named entity recognition, unsupervised learning 
+    
++ I am missing a bit of a more systematic comparison of the methods
+    + Quality, Scalability, Required Skills
+
 
 ]
 
@@ -201,6 +204,7 @@ The authors mainly compare their method to two others:
 
 ### 2. Review and compare existing methods
 
+How to identify social group mentions in text and how methods compare:
 
 | Method | Quality | Scalability | (Technical) Skill |
 | --- | --- | --- | --- |
@@ -208,9 +212,6 @@ The authors mainly compare their method to two others:
 | Dictionary-based annotation | Moderate to low (depends on quality of dictionary) | High (relatively fast and easy to implement)  | Low to moderate (requires some technical knowledge but can be done with existing tools or software) |
 | Supervised machine learning | High (if properly trained and validated)  | High (scalable to large text corpora)  | High (requires expertise in machine learning, natural language processing, and programming languages such as Python or R)|
 
-&lt;br&gt;
-
-What about other (automated) methods: clustering (unsupervised learning), named entity recognition, hybrid approaches?
 
 ---
 
@@ -237,6 +238,9 @@ What about other (automated) methods: clustering (unsupervised learning), named 
 
 .pull-right[
 
++ Authors settle on using RoBERTa 
+    + would there have been other options? would similar transformers perform as well?
+
 + So far code and software documentation is missing
 
     + If I want to implement this myself, how do I actually do this? 
@@ -251,12 +255,15 @@ What about other (automated) methods: clustering (unsupervised learning), named 
 + How did the authors make sure their method does what they say it does?
     + Cross-validation, out-of-sample predictions
 
-+ Case selection:
-    + UK and German
-    + seems appropriate
++ Use Case application (UK and Germany):
+    + application is rather descriptive
+    + maybe: "Embedding Regression: Models for Context-Specific Description and Inference"
+ (Rodriguez/Spirling 2022)
 
 + Testing cross-party and cross-country/language transfer
-    + performance promising
+    + performance promising but enough?
+    
+![](img/crossparty.png)
     
 ]
 
@@ -290,7 +297,7 @@ Authors discuss three limitations:
 
 &lt;br&gt;
 
-&lt;i&gt;2.&lt;/i&gt; no *typology* of group mentions: e.g. “the working class” or “age-based group.
+&lt;i&gt;2.&lt;/i&gt; no *typology* of group mentions: e.g. "the working class" or "age-based group".
 
 &lt;br&gt;
 
@@ -306,7 +313,21 @@ I would add a fourth one:
 
 &lt;i&gt;4.&lt;/i&gt; necessitates a computational skillset and likely fluency in R/Python
 
+
+
++ What analysis are enabled/enhanced through this method?
+    + this could be a bit stronger in the conclusion
+
 ]
+
+---
+
+# Additional Questions
+
+1. Computational resources: how long does it take to train the model(s)?
+
+
+2. You mention that you also train on political groups, institutions, implicit social groups, collective actors. What are the proportions of these? 
 
 ---
 
