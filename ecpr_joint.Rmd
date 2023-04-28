@@ -1,8 +1,8 @@
 ---
 title: "Algorithmic Microtargeting?"
 subtitle: "How ad delivery algorithms influence distribution of political ads"
-author: "Fabio Votta, Tom Dobber, Natali Helberger, Claes de Vreese, and Benjamin Guinaudeau"
-date: "`r Sys.Date()`"
+author: "<b>Fabio Votta</b>, Tom Dobber, Natali Helberger, and Claes de Vreese <i>(University of Amsterdam)</i>, Benjamin Guinaudeau  <i>(University of Konstanz)</i>"
+date: 'favstats.github.io/targex (Slides) <br> `r icons::icon_style(icons::fontawesome("twitter"),fill="blue")`&nbsp;@favstats <br> `r icons::icon_style(icons::fontawesome("mastodon"),fill="#615ff7")`&nbsp;@favstats@fosstodon.org &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28th April 2023 - ECPR Joint Sessions 2023 '
 output:
   xaringan::moon_reader:
     css: [ascor.css, default]
@@ -48,32 +48,81 @@ overview_day <- readRDS("../algo_ads/data/overview_day.rds")
 
 ---
 
-### Political Microtargeting
+### Online Political Microtargeting
 
-+ Discourse on (online) political microtargeting is often focused on the "bad actor" story
++ Discourse on *online political microtargeting* is often focused on the "bad actor" story
 
   + Russian election interference campaign (IRA)
   
   + Cambridge Analytica
   
+
+*The explicit assumption here is that the advertisers have strong control over who sees which ad*
+
+
 --
 
 <br>
 
-+ The explicit assumption here is that the advertisers have strong control over who sees which ad
+**But there is more than *just* targeting criteria that decides who sees political ads:**
 
-> But there is more than just targeting criteria that decides who sees political ads:
++ advertisers can set targeting *boundaries*
+    
+    + only men, only recently divorced, above 50
 
-   + advertisers can set targeting *boundaries*
-
-   + *ad auctions* and *ad delivery algorithms* decide which individual users get ads from which advertiser
+    + *ad delivery algorithms* decide which individual users get ads from which advertiser
 
 
 ---
 
-### Who decides who sees which ad on Meta?
+class: center, middle, white
 
-> There is more than just targeting criteria that decides who sees political ads:
+
+<!-- ![](img/plantuml00.png) -->
+<img src="img/plantuml00.png" width="80%">
+
+
+---
+
+class: center, middle, white
+
+<!-- ![](img/plantuml01.png) -->
+<img src="img/plantuml01.png" width="80%">
+
+
+---
+
+
+class: center, middle, white
+
+<!-- ![](img/plantuml02.png) -->
+
+
+<img src="img/plantuml02.png" width="80%">
+
+---
+
+
+class: center, middle, white
+
+<!-- ![](img/plantuml04.png) -->
+
+
+<img src="img/plantuml04.png" width="80%">
+
+
+---
+
+class: center, middle, white
+
+<!-- ![](img/plantuml05.png) -->
+<img src="img/plantuml05.png" width="80%">
+
+
+---
+
+
+### Who decides who sees which ad on Meta?
 
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
@@ -85,7 +134,7 @@ overview_day <- readRDS("../algo_ads/data/overview_day.rds")
 
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
-+ **+ Relevance** = how relevant is the ad to the user
++ **Relevance** = how relevant is the ad to the user
 
 ```{r, out.width="70%", echo = F}
 knitr::include_graphics("img/relevant_quote.png")
@@ -95,14 +144,44 @@ knitr::include_graphics("img/relevant_quote.png")
 
 ---
 
+### A (silly) example
+
+.pull-left[
+    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1465341854i/12111823.jpg" width = "60%">
+]
+
+--
+
+.pull-right[
+    ![](img/fsnow.png)
+F. Snow, obsessed with A Song of Ice and Fire
+]
+
+
+---
+
+
+
 ### Who decides who sees which ad on Meta?
 
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
-+ **+ Relevance** = how relevant is the ad to the user
++ **Relevance** = how relevant is the ad to the user
+
+
+![](img/auction11.jpg)
+
+---
+
+### Who decides who sees which ad on Meta?
+
++ **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
+
++ **Relevance** = how relevant is the ad to the user
 
 
 ![](img/auction1.jpg)
+--
 
 ##### The automated process of finding *relevant* audiences is driven by *ad delivery algorithms*, we term this:
 
@@ -404,7 +483,14 @@ We used 9 different (paired) targeting criteria for our advertisements
 
 ---
 
+class: white
 
+### Relevance Coding
+
+![](img/relevance_coding.png)
+
+
+---
 
 class: center, middle
 
@@ -432,10 +518,35 @@ class: center, middle
 ---
 
 
-
 class: center, middle
 
 ## Results
+
+---
+
+class: white
+
+### Relevance X Price (A) / Ad delivery shares (B)
+
+![](img/scatters.png)
+
+---
+
+class: white
+
+### Regression Results (H1 & H2)
+
+![](img/reg1.png)
+
+
+---
+
+class: white
+
+### Regression Results (H1 & H2)
+
+![](img/reg2.png)
+
 
 ---
 
@@ -783,6 +894,161 @@ Ads **cost more for**:
 
 ---
 
+
+
+class: white, middle center
+
+## Skewed delivery 
+
+in terms of gender, age and region
+
+---
+
+
+
+class: white
+
+## Differences in delivery by gender
+
+.pull-left[
++ *Line at zero* shows empirical equilibrium of target audiences (i.e. the observed share of men and women in target audience)
+
++ *Deviation from zero* are algorithmic biases
+
+  + above zero: prioritization
+  
+  + below zero: de-prioritization
+
++ Ads *deliver to more men* for every party
+
++ However: bias towards men seems smaller for GroenLinks
+]
+
+
+.pull-right[
+```{r}
+
+gender_dat <- readRDS("../algo_ads/data/gender.rds") %>% 
+  filter(gender != "unknown")
+
+gender_audience <- readRDS("../algo_ads/data/audience_joined_gender.rds")
+
+gender_audience %>% 
+  filter(gender != "unknown") %>%
+  # filter(targeting == "No Targeting") %>%
+  # drop_na(campaign_name) %>%
+  ggplot(aes(gender, diff)) +
+  geom_boxplot() +
+  facet_wrap(~party) +
+  ggpubr::stat_compare_means() +
+  EnvStats::stat_mean_sd_text(digits = 0) +
+  theme_minimal()  +
+  theme(strip.background = element_rect(fill = "lightgrey")) +
+  labs(y = "Difference between audience share and delivery share") +
+  ggtitle("Difference between audience share and delivery share") +
+  geom_hline(yintercept = 0, linetype = "dashed")
+```
+]
+
+
+
+
+---
+
+class: white
+
+## Differences in delivery by age group
+
+
+.pull-left[
+
++ Ads *deliver less to young people*
+
+  + aged 18-24
+
++ Consistent for each party
+
+]
+
+--
+
+.pull-right[
+```{r}
+age_audience <- readRDS("../algo_ads/data/audience_joined_age.rds")
+
+
+age_audience %>%
+  filter(age != "13-17") %>% 
+  filter(age != "unknown") %>%
+  # filter(targeting == "No Targeting") %>%
+  # drop_na(campaign_name) %>%
+  ggplot(aes(age, diff)) +
+  geom_boxplot() +
+  facet_wrap(~party) +
+  # ggpubr::stat_compare_means() +
+  # EnvStats::stat_mean_sd_text(digits = 0) +
+  theme_minimal()  +
+  theme(strip.background = element_rect(fill = "lightgrey")) +
+  labs(y = "Difference between audience share and delivery share") +
+  ggtitle("Difference between audience share and delivery share") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  coord_flip()
+```
+]
+
+
+---
+
+class: white
+
+## Regional differences
+
+--
+
+.pull-left[
+
++ Ads deliver more to some regions
+
+  + for example: Limburg, Friesland, Drenthe
+
++ Ads deliver less to other regions
+
+  + Utrecht, North Holland, North Brabant
+
++ Consistent for each party
+
+
+]
+
+--
+
+.pull-right[
+```{r}
+region_audience <- readRDS("../algo_ads/data/audience_joined_region.rds")
+
+
+region_audience %>%
+  filter(age != "13-17") %>% 
+  filter(age != "unknown") %>%
+  mutate(region = fct_reorder(region, diff)) %>% 
+  # filter(targeting == "No Targeting") %>%
+  # drop_na(campaign_name) %>%
+  ggplot(aes(region, diff)) +
+  geom_boxplot() +
+  facet_wrap(~party) +
+  # ggpubr::stat_compare_means() +
+  # EnvStats::stat_mean_sd_text(digits = 0) +
+  theme_minimal()  +
+  theme(strip.background = element_rect(fill = "lightgrey")) +
+  labs(y = "Difference between audience share and delivery share") +
+  ggtitle("Difference between audience share and delivery share") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  coord_flip()
+```
+]
+
+---
+
 class: center, middle
 
 ## Summary
@@ -800,30 +1066,6 @@ Our findings do not always align with expectations.
 
 > We find that Meta ad delivery algorithm prioritizes certain parties and audiences for political advertising
 
-
-+ Compared to GroenLinks and VVD:
-  + PvdA pays the least (**10-12 cents less** or: 8-10%) 
-  + PvdA reaches more people (~**1.1 - 1.3k more** per ad, in total: 14-17k more)
-  
-+ Higher-educated people (vs. lower-educated people) 
-    + cheaper to reach (~-5%)
-    + deliver more (~2.6% higher share)
-
-+ People interested in environment (vs. not)
-  + more expensive to reach (~+10%)
-  + deliver less (~-5.11% lower share)
-
----
-
-### Age, gender and regional biases
-
-Even after controlling for Meta user breakdown:
-
-+ Men systematically receive more ads than women 
-
-+ 18-24 year olds systematically receive less ads 
-
-+ Certain Dutch provinces systematically receive less ads than others 
 
 ---
 
@@ -867,11 +1109,11 @@ class: center, middle
 
 .pull-left[
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
 
 
@@ -879,11 +1121,11 @@ class: center, middle
 
 .pull-right[
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
 
 

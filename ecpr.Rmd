@@ -188,8 +188,8 @@ The authors mainly compare their method to two others:
 
 .pull-right[
 
-+ No empirical comparison of how other methods would perform on the same dataset
-    + is this even feasible though?
++ Empirical comparison of how other methods would perform on the same dataset
+    + make it more explicit
 
 + Any additional methods that should be compared or mentioned?
     + named entity recognition, unsupervised learning 
@@ -242,7 +242,7 @@ How to identify social group mentions in text and how methods compare:
 
 .pull-right[
 
-+ Authors settle on using RoBERTa 
++ Authors fine-tune RoBERTa 
     + would there have been other options? would similar transformers perform as well?
 
 + So far code and software documentation is missing

@@ -3,8 +3,7 @@
   <head>
     <title>Algorithmic Microtargeting?</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Fabio Votta, Tom Dobber, Natali Helberger, Claes de Vreese, and Benjamin Guinaudeau" />
-    <meta name="date" content="2023-04-25" />
+    <meta name="author" content="Fabio Votta, Tom Dobber, Natali Helberger, and Claes de Vreese (University of Amsterdam), Benjamin Guinaudeau (University of Konstanz)" />
     <script src="libs/header-attrs-2.18/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="ascor.css" type="text/css" />
@@ -20,10 +19,10 @@ class: bottom, left, title-slide
 ## How ad delivery algorithms influence distribution of political ads
 ]
 .author[
-### Fabio Votta, Tom Dobber, Natali Helberger, Claes de Vreese, and Benjamin Guinaudeau
+### <b>Fabio Votta</b>, Tom Dobber, Natali Helberger, and Claes de Vreese <i>(University of Amsterdam)</i>, Benjamin Guinaudeau <i>(University of Konstanz)</i>
 ]
 .date[
-### 2023-04-25
+### favstats.github.io/targex (Slides) <br> <svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:blue;" xmlns="http://www.w3.org/2000/svg"> <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg> <span class="citation">@favstats</span> <br> <svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:#615ff7;" xmlns="http://www.w3.org/2000/svg"> <path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"></path></svg> <span class="citation">@favstats</span><span class="citation">@fosstodon.org</span>                                                                      28th April 2023 - ECPR Joint Sessions 2023
 ]
 
 ---
@@ -41,32 +40,81 @@ layout: true
 
 ---
 
-### Political Microtargeting
+### Online Political Microtargeting
 
-+ Discourse on (online) political microtargeting is often focused on the "bad actor" story
++ Discourse on *online political microtargeting* is often focused on the "bad actor" story
 
   + Russian election interference campaign (IRA)
   
   + Cambridge Analytica
   
+
+*The explicit assumption here is that the advertisers have strong control over who sees which ad*
+
+
 --
 
 &lt;br&gt;
 
-+ The explicit assumption here is that the advertisers have strong control over who sees which ad
+**But there is more than *just* targeting criteria that decides who sees political ads:**
 
-&gt; But there is more than just targeting criteria that decides who sees political ads:
++ advertisers can set targeting *boundaries*
+    
+    + only men, only recently divorced, above 50
 
-   + advertisers can set targeting *boundaries*
-
-   + *ad auctions* and *ad delivery algorithms* decide which individual users get ads from which advertiser
+    + *ad delivery algorithms* decide which individual users get ads from which advertiser
 
 
 ---
 
-### Who decides who sees which ad on Meta?
+class: center, middle, white
 
-&gt; There is more than just targeting criteria that decides who sees political ads:
+
+&lt;!-- ![](img/plantuml00.png) --&gt;
+&lt;img src="img/plantuml00.png" width="80%"&gt;
+
+
+---
+
+class: center, middle, white
+
+&lt;!-- ![](img/plantuml01.png) --&gt;
+&lt;img src="img/plantuml01.png" width="80%"&gt;
+
+
+---
+
+
+class: center, middle, white
+
+&lt;!-- ![](img/plantuml02.png) --&gt;
+
+
+&lt;img src="img/plantuml02.png" width="80%"&gt;
+
+---
+
+
+class: center, middle, white
+
+&lt;!-- ![](img/plantuml04.png) --&gt;
+
+
+&lt;img src="img/plantuml04.png" width="80%"&gt;
+
+
+---
+
+class: center, middle, white
+
+&lt;!-- ![](img/plantuml05.png) --&gt;
+&lt;img src="img/plantuml05.png" width="80%"&gt;
+
+
+---
+
+
+### Who decides who sees which ad on Meta?
 
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
@@ -78,7 +126,7 @@ layout: true
 
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
-+ **+ Relevance** = how relevant is the ad to the user
++ **Relevance** = how relevant is the ad to the user
 
 &lt;img src="img/relevant_quote.png" width="70%" /&gt;
 
@@ -86,14 +134,44 @@ layout: true
 
 ---
 
+### A (silly) example
+
+.pull-left[
+    &lt;img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1465341854i/12111823.jpg" width = "60%"&gt;
+]
+
+--
+
+.pull-right[
+    ![](img/fsnow.png)
+F. Snow, obsessed with A Song of Ice and Fire
+]
+
+
+---
+
+
+
 ### Who decides who sees which ad on Meta?
 
 + **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
-+ **+ Relevance** = how relevant is the ad to the user
++ **Relevance** = how relevant is the ad to the user
+
+
+![](img/auction11.jpg)
+
+---
+
+### Who decides who sees which ad on Meta?
+
++ **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
+
++ **Relevance** = how relevant is the ad to the user
 
 
 ![](img/auction1.jpg)
+--
 
 ##### The automated process of finding *relevant* audiences is driven by *ad delivery algorithms*, we term this:
 
@@ -395,7 +473,14 @@ We used 9 different (paired) targeting criteria for our advertisements
 
 ---
 
+class: white
 
+### Relevance Coding
+
+![](img/relevance_coding.png)
+
+
+---
 
 class: center, middle
 
@@ -423,10 +508,35 @@ class: center, middle
 ---
 
 
-
 class: center, middle
 
 ## Results
+
+---
+
+class: white
+
+### Relevance X Price (A) / Ad delivery shares (B)
+
+![](img/scatters.png)
+
+---
+
+class: white
+
+### Regression Results (H1 &amp; H2)
+
+![](img/reg1.png)
+
+
+---
+
+class: white
+
+### Regression Results (H1 &amp; H2)
+
+![](img/reg2.png)
+
 
 ---
 
@@ -597,6 +707,99 @@ Ads **cost more for**:
 
 ---
 
+
+
+class: white, middle center
+
+## Skewed delivery 
+
+in terms of gender, age and region
+
+---
+
+
+
+class: white
+
+## Differences in delivery by gender
+
+.pull-left[
++ *Line at zero* shows empirical equilibrium of target audiences (i.e. the observed share of men and women in target audience)
+
++ *Deviation from zero* are algorithmic biases
+
+  + above zero: prioritization
+  
+  + below zero: de-prioritization
+
++ Ads *deliver to more men* for every party
+
++ However: bias towards men seems smaller for GroenLinks
+]
+
+
+.pull-right[
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-8-1.png" width="504" /&gt;
+]
+
+
+
+
+---
+
+class: white
+
+## Differences in delivery by age group
+
+
+.pull-left[
+
++ Ads *deliver less to young people*
+
+  + aged 18-24
+
++ Consistent for each party
+
+]
+
+--
+
+.pull-right[
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+]
+
+
+---
+
+class: white
+
+## Regional differences
+
+--
+
+.pull-left[
+
++ Ads deliver more to some regions
+
+  + for example: Limburg, Friesland, Drenthe
+
++ Ads deliver less to other regions
+
+  + Utrecht, North Holland, North Brabant
+
++ Consistent for each party
+
+
+]
+
+--
+
+.pull-right[
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-10-1.png" width="504" /&gt;
+]
+
+---
+
 class: center, middle
 
 ## Summary
@@ -614,30 +817,6 @@ Our findings do not always align with expectations.
 
 &gt; We find that Meta ad delivery algorithm prioritizes certain parties and audiences for political advertising
 
-
-+ Compared to GroenLinks and VVD:
-  + PvdA pays the least (**10-12 cents less** or: 8-10%) 
-  + PvdA reaches more people (~**1.1 - 1.3k more** per ad, in total: 14-17k more)
-  
-+ Higher-educated people (vs. lower-educated people) 
-    + cheaper to reach (~-5%)
-    + deliver more (~2.6% higher share)
-
-+ People interested in environment (vs. not)
-  + more expensive to reach (~+10%)
-  + deliver less (~-5.11% lower share)
-
----
-
-### Age, gender and regional biases
-
-Even after controlling for Meta user breakdown:
-
-+ Men systematically receive more ads than women 
-
-+ 18-24 year olds systematically receive less ads 
-
-+ Certain Dutch provinces systematically receive less ads than others 
 
 ---
 
@@ -681,11 +860,11 @@ class: center, middle
 
 .pull-left[
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
 
 
@@ -693,11 +872,11 @@ class: center, middle
 
 .pull-right[
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
-![](https://c.tenor.com/Q9qk5zN5EesAAAAM/space-kitten.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
+![](https://media.tenor.com/-uMIofTxVWIAAAAd/cat-vibing-vibing-cat.gif)
 
 
 
@@ -736,13 +915,13 @@ class: white
 ### Within-party differences per day - Reach and Cost
 
 .pull-left[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-8-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
 ]
 
 --
 
 .pull-right[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-12-1.png" width="504" /&gt;
 ]
 
 
@@ -787,7 +966,7 @@ We observe:
 ]
 
 .pull-right[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-10-1.png" width="576" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-13-1.png" width="576" /&gt;
 ]
 
 
@@ -835,13 +1014,13 @@ class: white
 
 
 .pull-left[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-12-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
 
 
 ]
 
 .pull-right[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-16-1.png" width="504" /&gt;
 
 
 ]
@@ -879,7 +1058,7 @@ class: white
 
 
 .pull-right[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
 ]
 
 
@@ -905,7 +1084,7 @@ class: white
 --
 
 .pull-right[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-18-1.png" width="504" /&gt;
 ]
 
 
@@ -935,7 +1114,7 @@ class: white
 --
 
 .pull-right[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-16-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-19-1.png" width="504" /&gt;
 ]
 
 ---
@@ -952,7 +1131,7 @@ class: white
 
 
 .pull-left[
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
 ]
 
 
@@ -960,7 +1139,7 @@ class: white
 
 
 
-&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-19-1.png" width="504" /&gt;
+&lt;img src="ecpr_joint_files/figure-html/unnamed-chunk-22-1.png" width="504" /&gt;
 
 
 ]
