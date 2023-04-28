@@ -2,7 +2,7 @@
 title: "Algorithmic Microtargeting?"
 subtitle: "How ad delivery algorithms influence distribution of political ads"
 author: "<b>Fabio Votta</b>, Tom Dobber, Natali Helberger, and Claes de Vreese <i>(University of Amsterdam)</i>, Benjamin Guinaudeau  <i>(University of Konstanz)</i>"
-date: 'favstats.github.io/targex (Slides) <br> `r icons::icon_style(icons::fontawesome("twitter"),fill="blue")`&nbsp;@favstats <br> `r icons::icon_style(icons::fontawesome("mastodon"),fill="#615ff7")`&nbsp;@favstats@fosstodon.org &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28th April 2023 - ECPR Joint Sessions 2023 '
+date: 'favstats.github.io/algo_microtargeting/ecpr_joint (Slides) <br> `r icons::icon_style(icons::fontawesome("twitter"),fill="blue")`&nbsp;@favstats <br> `r icons::icon_style(icons::fontawesome("mastodon"),fill="#615ff7")`&nbsp;@favstats@fosstodon.org &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28th April 2023 - ECPR Joint Sessions 2023 '
 output:
   xaringan::moon_reader:
     css: [ascor.css, default]
@@ -48,29 +48,49 @@ overview_day <- readRDS("../algo_ads/data/overview_day.rds")
 
 ---
 
-### Online Political Microtargeting
+### Online Political Microtargeting of Political Ads - the "bad actors"-story
+ 
+ 
+.pull-left[
+<img src="img/cambridge_analytica.png" width="100%">
 
-+ Discourse on *online political microtargeting* is often focused on the "bad actor" story
 
-  + Russian election interference campaign (IRA)
+] 
   
-  + Cambridge Analytica
   
 
-*The explicit assumption here is that the advertisers have strong control over who sees which ad*
 
 
+
+
+---
+
+
+### Online Political Microtargeting of Political Ads - the "bad actors"-story
+ 
+ 
+.pull-left[
+<img src="img/cambridge_analytica.png" width="100%">
+
+
+*The explicit assumption here that advertisers typically have strong control over who sees which ad*
+
+] 
+  
+  
 --
 
-<br>
+.pull-right[
 
 **But there is more than *just* targeting criteria that decides who sees political ads:**
 
 + advertisers can set targeting *boundaries*
-    
-    + only men, only recently divorced, above 50
 
-    + *ad delivery algorithms* decide which individual users get ads from which advertiser
+    + *ad delivery algorithms* "decide" which individual users get ads from which advertiser
+
+]
+
+
 
 
 ---
