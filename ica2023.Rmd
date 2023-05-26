@@ -2,7 +2,7 @@
 title: "Algorithmic Microtargeting?"
 subtitle: "How ad delivery algorithms influence distribution of political ads"
 author: "<b>Fabio Votta</b>, Tom Dobber, Natali Helberger, and Claes de Vreese <i>(University of Amsterdam)</i>, Benjamin Guinaudeau  <i>(University of Konstanz)</i>"
-date: 'favstats.github.io/algo_microtargeting/ica2023 (Slides) <br> `r icons::icon_style(icons::fontawesome("twitter"),fill="blue")`&nbsp;@favstats <br> `r icons::icon_style(icons::fontawesome("mastodon"),fill="#615ff7")`&nbsp;@favstats@fosstodon.org &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 27th May 2023 - ICA 2023 '
+date: 'favstats.github.io/algo_microtargeting/ica2023 (Slides) <br> `r icons::icon_style(icons::fontawesome("twitter"),fill="blue")`&nbsp;@favstats <br> `r icons::icon_style(icons::fontawesome("mastodon"),fill="#615ff7")`&nbsp;@favstats@fosstodon.org &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 27th May 2023 - ICA 2023 '
 output:
   xaringan::moon_reader:
     css: [ascor.css, default]
@@ -872,12 +872,20 @@ class: center, middle
 
 Our findings do not always align with expectations.
 
+H1: More "relevant" audiences were not always cheaper
+
+H2: More "relevant" audiences were not always reached more
+
+H3: Party with greatest audience did not reach more or get cheaper prices
+
 --
 
 **However:**
 
-> We find that Meta ad delivery algorithm prioritizes certain parties and audiences for political advertising
+> We **still** find that Meta ad delivery algorithm prioritizes certain parties and audiences for political advertising
 
+1. PvdA pays least and reach most
+2. Lower-educated, people interested in environment, women and younger people more expensive to reach
 
 ---
 
@@ -886,19 +894,19 @@ Our findings do not always align with expectations.
 ### Implications
 
 
-+ Meta (dis-)advantages certain parties
++ Unequal playing field
+
+  + Meta (dis-)advantages certain parties
 
   +  the findings presented in this paper show that political parties were not charged the same price for the same service
   
-  + Unequal playing field
-
 --
 
-+ Some groups of people and regions are **systematically** less likely to receive political advertisements and more expensive to reach
++ Potential for deepening political, social and geographical inequalities 
+
+  + Some groups of people and regions are **systematically** less likely to receive political advertisements and more expensive to reach
 
   + isolating these groups from receiving election-related information
-  
-  + may deepen political, social and geographical inequalities
 
 --
 
@@ -918,6 +926,8 @@ Our findings do not always align with expectations.
 class: center, middle
 
 ## Thank you for your attention!
+
+Link to presentation: *favstats.github.io/algo_microtargeting/ica2023*
 
 .pull-left[
 
