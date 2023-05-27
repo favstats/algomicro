@@ -141,18 +141,26 @@ class: center, middle, white
 
 ---
 
+### Who decides who sees which ad on Meta?
+
++ **Ad auctions** = an auction takes place that determines which ad by whom is shown
+
+<center>
+<img src="img/fb-ad-bidding.png" width="65%" height="65%">
+</center>
+
+---
+
+class: white
+
 
 ### Who decides who sees which ad on Meta?
 
-+ **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
-
-![](img/auction0.jpg)
+![](img/adauctionparameters.png)
 
 ---
 
 ### Who decides who sees which ad on Meta?
-
-+ **Ad auctions** = an auction takes place that determines which ad by whom is shown: based on *budget*
 
 + **Relevance** = how relevant is the ad to the user
 
@@ -171,8 +179,10 @@ knitr::include_graphics("img/relevant_quote.png")
 
 + **Relevance** = how relevant is the ad to the user
 
+<center>
+<img src="img/fb-ad-bidding2.png" width="65%" height="65%">
+</center>
 
-![](img/Originals/auction1.jpg)
 --
 
 ##### *Ad delivery algorithms* finding *relevant* audiences for ads: we term this **algorithmic microtargeting**
