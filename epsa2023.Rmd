@@ -854,11 +854,63 @@ Ads **cost more for**:
 
 class: white, middle center
 
-## Skewed delivery 
+**18-24 year olds and women are reached less (and cost more to reach)**
 
-in terms of gender, age and region:
 
-$\rightarrow$ women, and 18-24 year olds cost more to reach and are reached less
+.pull-left[
+```{r}
+age_audience <- readRDS("../algo_ads/data/audience_joined_age.rds")
+
+
+age_audience %>%
+  filter(age != "13-17") %>% 
+  filter(age != "unknown") %>%
+  # filter(targeting == "No Targeting") %>%
+  # drop_na(campaign_name) %>%
+  ggplot(aes(age, diff)) +
+  geom_boxplot() +
+  facet_wrap(~party) +
+  # ggpubr::stat_compare_means() +
+  # EnvStats::stat_mean_sd_text(digits = 0) +
+  theme_minimal()  +
+  theme(strip.background = element_rect(fill = "lightgrey")) +
+  labs(y = "Difference between audience share and delivery share") +
+  ggtitle("Difference between audience share and delivery share") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  coord_flip()
+```
+]
+
+
+
+.pull-right[
+```{r}
+
+gender_dat <- readRDS("../algo_ads/data/gender.rds") %>% 
+  filter(gender != "unknown")
+
+gender_audience <- readRDS("../algo_ads/data/audience_joined_gender.rds")
+
+gender_audience %>% 
+  filter(gender != "unknown") %>%
+  # filter(targeting == "No Targeting") %>%
+  # drop_na(campaign_name) %>%
+  ggplot(aes(gender, diff)) +
+  geom_boxplot() +
+  facet_wrap(~party) +
+  ggpubr::stat_compare_means() +
+  EnvStats::stat_mean_sd_text(digits = 0) +
+  theme_minimal()  +
+  theme(strip.background = element_rect(fill = "lightgrey")) +
+  labs(y = "Difference between audience share and delivery share") +
+  ggtitle("Difference between audience share and delivery share") +
+  geom_hline(yintercept = 0, linetype = "dashed")
+```
+]
+
+
+
+
 
 ---
 
