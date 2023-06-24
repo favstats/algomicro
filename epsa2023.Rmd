@@ -151,15 +151,6 @@ class: center, middle, white
 
 ---
 
-class: white
-
-
-### Who decides who sees which ad on Meta?
-
-![](img/adauctionparameters.png)
-
----
-
 ### Who decides who sees which ad on Meta?
 
 + **Relevance** = how relevant is the ad to the user
