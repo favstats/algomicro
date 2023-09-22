@@ -520,7 +520,7 @@ class: white
 
 #### Between-party differences (per individual ad)
 
-.font80[PvdA pays the least (**10-12 cents less** or: 8-10%) & reaches more people (~**1.1 - 1.3k more** per ad)]
+.font80[PvdA pays the least (**10-12 cents less** or: 9-11%) & reaches more people (~**1.1 - 1.3k more** per ad)]
 
 
 .pull-left[
@@ -850,63 +850,12 @@ Ads **cost more for**:
 
 ---
 
-
-
 class: white, middle center
 
 **18-24 year olds and women are reached less (and cost more to reach)**
 
+![](img/priceshare.png)
 
-.pull-left[
-```{r}
-age_audience <- readRDS("../algo_ads/data/audience_joined_age.rds")
-
-
-age_audience %>%
-  filter(age != "13-17") %>% 
-  filter(age != "unknown") %>%
-  # filter(targeting == "No Targeting") %>%
-  # drop_na(campaign_name) %>%
-  ggplot(aes(age, diff)) +
-  geom_boxplot() +
-  facet_wrap(~party) +
-  # ggpubr::stat_compare_means() +
-  # EnvStats::stat_mean_sd_text(digits = 0) +
-  theme_minimal()  +
-  theme(strip.background = element_rect(fill = "lightgrey")) +
-  labs(y = "Difference between audience share and delivery share") +
-  ggtitle("Difference between audience share and delivery share") +
-  geom_hline(yintercept = 0, linetype = "dashed") +
-  coord_flip()
-```
-]
-
-
-
-.pull-right[
-```{r}
-
-gender_dat <- readRDS("../algo_ads/data/gender.rds") %>% 
-  filter(gender != "unknown")
-
-gender_audience <- readRDS("../algo_ads/data/audience_joined_gender.rds")
-
-gender_audience %>% 
-  filter(gender != "unknown") %>%
-  # filter(targeting == "No Targeting") %>%
-  # drop_na(campaign_name) %>%
-  ggplot(aes(gender, diff)) +
-  geom_boxplot() +
-  facet_wrap(~party) +
-  ggpubr::stat_compare_means() +
-  EnvStats::stat_mean_sd_text(digits = 0) +
-  theme_minimal()  +
-  theme(strip.background = element_rect(fill = "lightgrey")) +
-  labs(y = "Difference between audience share and delivery share") +
-  ggtitle("Difference between audience share and delivery share") +
-  geom_hline(yintercept = 0, linetype = "dashed")
-```
-]
 
 
 
@@ -980,7 +929,7 @@ class: center, middle
 
 ## Thank you for your attention!
 
-Link to presentation: *favstats.github.io/algomicro/epsa2024*
+Link to presentation: *favstats.github.io/algomicro/epsa2023*
 
 .pull-left[
 
