@@ -19,8 +19,8 @@ output:
 layout: true
     
 <div class="logo"></div> 
-
-
+ 
+ 
 
 ```{r setup, include=FALSE}
 # Here you can place global options for the entire document.
